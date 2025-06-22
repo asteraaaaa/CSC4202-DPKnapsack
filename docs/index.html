@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DP Knapsack Portfolio - Izzah</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #f5f5f5; }
+        h1 { color: #006699; }
+        code { background: #eee; padding: 10px; display: block; white-space: pre-wrap; }
+        a { text-decoration: none; color: #006699; }
+    </style>
+</head>
+<body>
+<h1>📚 CSC4202 – DP Knapsack Portfolio</h1>
+<p>This project solves the classic <strong>0/1 Knapsack Problem</strong> using the Dynamic Programming (Bottom-Up) approach.</p>
+
+<h2>💡 Problem Statement</h2>
+<p>Given weights and values of n items, put these items in a knapsack of capacity W to get the maximum total value.</p>
+
+<h2>🧠 DP Solution</h2>
+<ul>
+    <li>Time Complexity: O(nW)</li>
+    <li>Space Complexity: O(nW)</li>
+    <li>Approach: Bottom-Up Table Filling</li>
+</ul>
+
+<h2>💻 Java Code</h2>
+<p>Below is a simplified version of my code:</p>
+
+<code>
+    public class DPSolver {
+    public static int knapsack(int W, int[] wt, int[] val, int n) {
+    int[][] dp = new int[n+1][W+1];
+    for (int i = 1; i <= n; i++) {
+    for (int w = 0; w <= W; w++) {
+    if (wt[i-1] <= w)
+    dp[i][w] = Math.max(val[i-1] + dp[i-1][w - wt[i-1]], dp[i-1][w]);
+    else
+    dp[i][w] = dp[i-1][w];
+    }
+    }
+    return dp[n][W];
+    }
+    }
+</code>
+
+<p><a href="../src/DPSolver.java" download>📄 Download full Java code</a></p>
+
+<p style="margin-top:40px;">Made with ❤️ by Izzah (UPM)</p>
+</body>
+</html>
