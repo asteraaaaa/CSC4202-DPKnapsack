@@ -2,50 +2,1014 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>DP Knapsack Portfolio - Izzah</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nyonyoo Group | Flood Relief Optimization</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Slab:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body { font-family: Arial, sans-serif; margin: 40px; background: #f5f5f5; }
-        h1 { color: #006699; }
-        code { background: #eee; padding: 10px; display: block; white-space: pre-wrap; }
-        a { text-decoration: none; color: #006699; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a73e8;
+            --secondary: #0d47a1;
+            --accent: #4caf50;
+            --light: #f5f7fa;
+            --dark: #1e3a5f;
+            --text: #333;
+            --gray: #78909c;
+            --water: #1e88e5;
+            --land: #43a047;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e7eb 100%);
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(90deg, var(--water) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Roboto Slab', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+
+            border-radius: 4px;
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .hero {
+            background: linear-gradient(rgba(30, 58, 95, 0.85), rgba(26, 115, 232, 0.85)), url('https://images.unsplash.com/photo-1601924994987-69e26d50dc26?ixlib=rb-4.0.3') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 6rem 0;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+            background-color: #3d8b40;
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent);
+            border-radius: 2px;
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-header {
+            padding: 1.5rem;
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-member {
+            text-align: center;
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .member-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1.5rem;
+            border: 5px solid var(--light);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .member-name {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .member-role {
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .problem-details {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .algo-comparison {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .algo-card {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .algo-card.selected {
+            border: 3px solid var(--accent);
+            position: relative;
+            transform: scale(1.03);
+        }
+
+        .algo-card.selected::after {
+            content: 'SELECTED';
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: var(--accent);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .flowchart-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .flowchart {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .flow-step {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            position: relative;
+        }
+
+        .flow-step::after {
+            content: '→';
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+            font-size: 1.5rem;
+        }
+
+        .flow-step:last-child::after {
+            display: none;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            line-height: 40px;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .algorithm-content {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            margin-bottom: 2rem;
+        }
+
+        .algorithm-content h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light);
+        }
+
+        .algorithm-content pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Consolas', monospace;
+            margin: 1.5rem 0;
+            line-height: 1.5;
+            tab-size: 4;
+        }
+
+        .proof-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .proof-step {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .proof-step h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .proof-step h4 i {
+            margin-right: 10px;
+        }
+
+        .testing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .testing-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .testing-card h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .results-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .result-card {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .result-card h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .flowchart {
+                grid-template-columns: 1fr;
+            }
+
+            .flow-step::after {
+                content: '↓';
+                right: 50%;
+                top: auto;
+                bottom: -20px;
+                transform: translateX(50%);
+            }
+        }
     </style>
 </head>
 <body>
-<h1>📚 CSC4202 – DP Knapsack Portfolio</h1>
-<p>This project solves the classic <strong>0/1 Knapsack Problem</strong> using the Dynamic Programming (Bottom-Up) approach.</p>
+<!-- Header & Navigation -->
+<header>
+    <div class="container">
+        <nav>
+            <div class="logo">
+                <i class="fas fa-hands-helping"></i>
+                <span>Nyonyoo</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#problem">Problem</a></li>
+                <li><a href="#algorithm">Algorithm</a></li>
+                <li><a href="#implementation">Implementation</a></li>
+                <li><a href="#correctness">Correctness</a></li>
+                <li><a href="#analysis">Analysis</a></li>
+                <li><a href="#testing">Testing</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
 
-<h2>💡 Problem Statement</h2>
-<p>Given weights and values of n items, put these items in a knapsack of capacity W to get the maximum total value.</p>
+<!-- Hero Section -->
+<section id="home" class="hero">
+    <div class="container">
+        <h1>Optimizing Flood Relief Supply Distribution</h1>
+        <p>Using Dynamic Programming to Maximize Aid Delivery in Disaster-Stricken Areas</p>
+        <a href="#problem" class="btn">Explore Our Project</a>
+    </div>
+</section>
 
-<h2>🧠 DP Solution</h2>
-<ul>
-    <li>Time Complexity: O(nW)</li>
-    <li>Space Complexity: O(nW)</li>
-    <li>Approach: Bottom-Up Table Filling</li>
-</ul>
+<!-- Team Section -->
+<section id="team" class="section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Our Team</h2>
+        </div>
+        <div class="team-grid">
+            <div class="team-member">
+                <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Team Member" class="member-img">
+                <h3 class="member-name">Nurul Izzah Mardhiyyah</h3>
+                <p class="member-role">Project Lead & Researcher</p>
+                <p>Specialized in algorithm design and project coordination.</p>
+            </div>
+            <div class="team-member">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Team Member" class="member-img">
+                <h3 class="member-name">Adibah Nawal</h3>
+                <p class="member-role">Algorithm Developer</p>
+                <p>Focuses on dynamic programming implementation.</p>
+            </div>
+            <div class="team-member">
+                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Team Member" class="member-img">
+                <h3 class="member-name">Filzah Irdina</h3>
+                <p class="member-role">UI/UX Designer</p>
+                <p>Creates user interfaces and visualization tools.</p>
+            </div>
+            <div class="team-member">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Team Member" class="member-img">
+                <h3 class="member-name">Muhammad Hazuan</h3>
+                <p class="member-role">Testing & Documentation</p>
+                <p>Ensures solution correctness and prepares documentation.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-<h2>💻 Java Code</h2>
-<p>Below is a simplified version of my code:</p>
+<!-- Problem Statement -->
+<section id="problem" class="section" style="background-color: #f0f7ff;">
+    <div class="container">
+        <div class="section-title">
+            <h2>Problem Statement</h2>
+        </div>
+        <div class="problem-details">
+            <h3>Flood Disaster in Kelantan</h3>
+            <p>In the aftermath of a major flood in Kelantan, rescue logistics workers must use boats with limited carrying capacity to convey vital relief supplies, including food, medication, tools, and clothing.</p>
 
-<code>
-    public class DPSolver {
-    public static int knapsack(int W, int[] wt, int[] val, int n) {
-    int[][] dp = new int[n+1][W+1];
-    for (int i = 1; i <= n; i++) {
-    for (int w = 0; w <= W; w++) {
-    if (wt[i-1] <= w)
-    dp[i][w] = Math.max(val[i-1] + dp[i-1][w - wt[i-1]], dp[i-1][w]);
-    else
-    dp[i][w] = dp[i-1][w];
-    }
-    }
-    return dp[n][W];
-    }
-    }
-</code>
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Challenge</h4>
+                    </div>
+                    <div class="card-body">
+                        <p>Every item has a unique weight and value, with the value indicating urgency and significance to the rescue effort. The challenge is to pack the most valuable combination of materials without exceeding the boat's maximum weight limit.</p>
+                    </div>
+                </div>
 
-<p><a href="../src/DPSolver.java" download>📄 Download full Java code</a></p>
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Constraints</h4>
+                    </div>
+                    <div class="card-body">
+                        <ul style="padding-left: 20px;">
+                            <li>Each item is either taken or not (0/1 decision)</li>
+                            <li>Total weight must not exceed maximum boat weight</li>
+                            <li>Limited transportation capacity</li>
+                            <li>Urgent time requirements</li>
+                        </ul>
+                    </div>
+                </div>
 
-<p style="margin-top:40px;">Made with ❤️ by Izzah (UPM)</p>
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Output</h4>
+                    </div>
+                    <div class="card-body">
+                        <ul style="padding-left: 20px;">
+                            <li>List of selected items</li>
+                            <li>Total value and weight</li>
+                            <li>Remaining capacity</li>
+                            <li>Visual summary of choices</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 2rem;">Scenario Overview</h3>
+            <p>In the aftermath of severe flooding in Kelantan, vast areas were left submerged, rendering roads impassable and cutting off thousands of residents from access to essential supplies. In response, rescue and logistics teams were deployed to deliver critical relief items such as food, medicine, tools, and clothing. Due to the flood conditions, boats with limited carrying capacity served as the only viable mode of transportation.</p>
+
+            <p>Given the urgency and the limited transport capacity, it became crucial to determine which combination of items should be transported on each trip to maximize their impact. Each item differed in both weight and importance (urgency), and no item could be split across trips. Therefore, the key challenge was to develop a solution that could maximize the total value of the items transported without exceeding the boat's weight limit.</p>
+
+            <h3 style="margin-top: 2rem;">Why This Matters</h3>
+            <p>Efficiently solving this packing problem is critical because it directly impacts human lives. Delays or suboptimal choices mean fewer essential supplies reach people who urgently need them. In our context, every kilogram of boat capacity must be used to its maximum benefit.</p>
+
+            <div class="card" style="margin-top: 2rem; background-color: #e3f2fd;">
+                <div class="card-body">
+                    <h4>Key Benefits of an Optimal Solution</h4>
+                    <ul style="padding-left: 20px; margin-top: 1rem;">
+                        <li><strong>Saving lives:</strong> Choosing the most urgent supplies first ensures that limited relief reaches those in greatest need, potentially reducing casualties.</li>
+                        <li><strong>Resource constraints:</strong> Boats and fuel are limited. An optimal packing means fewer trips required to deliver the same total value, conserving time and effort.</li>
+                        <li><strong>Time-critical response:</strong> In fast-changing flood conditions, an algorithmic packing plan allows quick decision-making.</li>
+                        <li><strong>Equity and impact:</strong> Ensuring that the combination of items is best possible increases fairness.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Algorithm Section -->
+<section id="algorithm" class="section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Algorithm Selection</h2>
+        </div>
+
+        <h3 style="text-align: center; margin-bottom: 1.5rem;">Comparison of Approaches</h3>
+        <div class="algo-comparison">
+            <div class="algo-card">
+                <h4>Divide and Conquer</h4>
+                <p><strong>Strengths:</strong></p>
+                <ul style="margin-bottom: 1rem; padding-left: 20px;">
+                    <li>Good for understanding problem structure</li>
+                    <li>Applies problem decomposition</li>
+                </ul>
+                <p><strong>Weaknesses:</strong></p>
+                <ul style="padding-left: 20px;">
+                    <li>No memorization leads to repeated calculations</li>
+                    <li>Inefficient for large inputs</li>
+                    <li>High time complexity without optimization</li>
+                </ul>
+            </div>
+
+            <div class="algo-card">
+                <h4>Greedy Programming</h4>
+                <p><strong>Strengths:</strong></p>
+                <ul style="margin-bottom: 1rem; padding-left: 20px;">
+                    <li>Very fast and simple to implement</li>
+                    <li>Works well for fractional knapsack</li>
+                </ul>
+                <p><strong>Weaknesses:</strong></p>
+                <ul style="padding-left: 20px;">
+                    <li>Fails for 0-1 knapsack problems</li>
+                    <li>Does not explore all possible options</li>
+                    <li>Doesn't guarantee optimal solution</li>
+                </ul>
+            </div>
+
+            <div class="algo-card selected">
+                <h4>Dynamic Programming</h4>
+                <p><strong>Strengths:</strong></p>
+                <ul style="margin-bottom: 1rem; padding-left: 20px;">
+                    <li>Suits 0-1 knapsack nature of problem</li>
+                    <li>Handles overlapping subproblems</li>
+                    <li>Guarantees optimal solution</li>
+                </ul>
+                <p><strong>Weaknesses:</strong></p>
+                <ul style="padding-left: 20px;">
+                    <li>Higher space and time requirements</li>
+                    <li>Requires careful memory management</li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;">
+            <h3>Why We Chose Dynamic Programming</h3>
+            <p style="max-width: 800px; margin: 1rem auto;">We select Dynamic Programming (DP) because our relief-packing problem is a classic 0-1 knapsack problem. In this scenario each item can either be taken or left behind (0-1 choice). The goal is to maximize the total value (urgency) of items loaded in a boat without exceeding its weight limit.</p>
+
+            <div class="card" style="margin: 2rem auto; max-width: 800px; background-color: #e8f5e9;">
+                <div class="card-body">
+                    <h4>Knapsack Problem Analogy</h4>
+                    <ul style="margin-top: 1rem; padding-left: 20px;">
+                        <li><strong>Items:</strong> The relief supplies (each with a weight w_i and a value v_i)</li>
+                        <li><strong>Capacity:</strong> The boat's maximum weight W</li>
+                        <li><strong>Objective:</strong> Maximize Σv_i of selected items s.t. Σw_i ≤ W</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="flowchart-container" style="margin-top: 3rem;">
+            <h3 style="text-align: center;">Solution Workflow</h3>
+            <div class="flowchart">
+                <div class="flow-step">
+                    <div class="step-number">1</div>
+                    <h4>Input Data</h4>
+                    <p>List of items with weights and values</p>
+                </div>
+                <div class="flow-step">
+                    <div class="step-number">2</div>
+                    <h4>Initialize DP Table</h4>
+                    <p>Create table for subproblem solutions</p>
+                </div>
+                <div class="flow-step">
+                    <div class="step-number">3</div>
+                    <h4>Fill DP Table</h4>
+                    <p>Compute optimal solutions bottom-up</p>
+                </div>
+                <div class="flow-step">
+                    <div class="step-number">4</div>
+                    <h4>Trace Solution</h4>
+                    <p>Identify selected items from DP table</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Implementation Section -->
+<section id="implementation" class="section" style="background-color: #f0f7ff;">
+    <div class="container">
+        <div class="section-title">
+            <h2>Implementation</h2>
+        </div>
+
+        <div class="algorithm-content">
+            <h3>Problem Formulation</h3>
+            <p>Formally, let there be n items. Each item i has weight w_i and value v_i. Boat capacity is W. We want to choose a subset S of items to maximize:</p>
+            <p style="text-align: center; font-weight: 500; margin: 1rem 0;">Σ v_i for i in S</p>
+            <p>subject to:</p>
+            <p style="text-align: center; font-weight: 500;">Σ w_i ≤ W for i in S</p>
+            <p>Each item is either taken (1) or not (0), giving it the 0-1 knapsack structure.</p>
+
+            <h3 style="margin-top: 2rem;">Java Implementation</h3>
+            <p>Our solution is implemented in Java with the following features:</p>
+
+            <h3 style="margin-top: 2rem;">Example Results</h3>
+            <div class="results-container">
+                <div class="result-card">
+                    <h4>Small Rescue Boat</h4>
+                    <p>Dynamic Programming Result</p>
+                    <p>Speed: 37 ms</p>
+                    <p>Total weight: 34520 g</p>
+                    <p>Total worth: 13230</p>
+                    <p>Remaining capacity: 480 g</p>
+                </div>
+
+                <div class="result-card">
+                    <h4>Medium Rubber Boat</h4>
+                    <p>Dynamic Programming Result</p>
+                    <p>Speed: 31 ms</p>
+                    <p>Total weight: 68520 g</p>
+                    <p>Total worth: 16590</p>
+                    <p>Remaining capacity: 1480 g</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="https://github.com/asteraaaaa/CSC4202-DPKnapsack" class="btn" target="_blank"><i class="fab fa-github"></i> View on GitHub</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Correctness Proof -->
+<section id="correctness" class="section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Correctness Proof</h2>
+        </div>
+
+        <div class="algorithm-content">
+            <h3>Problem Statement</h3>
+            <p>The objective is to maximize the total value based on the urgency and the significance of the items to the rescue efforts in the context of limited boat's limited maximum carrying capacity.</p>
+
+            <div class="proof-container">
+                <div class="proof-step">
+                    <h4><i class="fas fa-check-circle"></i> Base Case</h4>
+                    <p>In our problem, we initialize the DP table with size (n+1) * (W+1) such that:</p>
+                    <p>dp[0][w] = 0 for all w in 0 to W</p>
+                    <p>This indicates if there are 0 items, the maximum value the boat can carry is 0. This is correct as no items will yield zero value.</p>
+                </div>
+
+                <div class="proof-step">
+                    <h4><i class="fas fa-hypothesis"></i> Induction Hypothesis</h4>
+                    <p>We assume that for all items 1 to i-1 and all weight capacities 0 to w, the DP table dp[i-1][w] correctly represents the maximum total value of the items that can be packed into a boat of weight capacity w using only the first i-1 items.</p>
+                </div>
+
+                <div class="proof-step">
+                    <h4><i class="fas fa-step-forward"></i> Induction Step</h4>
+                    <p>For each item i with weight[i] and value[i], the algorithm considers two cases:</p>
+                    <ol style="padding-left: 20px; margin-top: 1rem;">
+                        <li>The item is not included: dp[i][w] = dp[i - 1][w]</li>
+                        <li>The item is included: dp[i][w] = dp[i - 1][w - weight[i]] + value[i]</li>
+                    </ol>
+                    <p style="margin-top: 1rem;">Assuming the induction hypothesis, both values are correctly computed.</p>
+                </div>
+
+                <div class="proof-step">
+                    <h4><i class="fas fa-flag-checkered"></i> Final State</h4>
+                    <p>After processing all items, dp[n][W] represents the maximum value attainable. The backtracking phase correctly reconstructs which items were included by checking where:</p>
+                    <p>dp[i][w] != dp[i - 1][w]</p>
+                    <p>Thus, the algorithm by induction is correct and ensures the optimal solution is selected.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Algorithm Analysis -->
+<section id="analysis" class="section" style="background-color: #f0f7ff;">
+    <div class="container">
+        <div class="section-title">
+            <h2>Algorithm Analysis</h2>
+        </div>
+
+        <div class="algorithm-content">
+            <h3>Complexity Analysis</h3>
+            <p>We analyze the time and space complexity of the algorithm in the worst, average, and best cases.</p>
+
+            <div class="card-container" style="margin-top: 2rem;">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Time Complexity</h4>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Key Parameters:</strong></p>
+                        <ul>
+                            <li>n = number of items</li>
+                            <li>W = total maximum capacity</li>
+                        </ul>
+                        <p>The algorithm uses nested loops:</p>
+                        <ul>
+                            <li>Outer loop runs n times</li>
+                            <li>Inner loop runs W+1 times</li>
+                        </ul>
+                        <p>Total operations: O(nW)</p>
+                        <p>Best, average, and worst case: O(nW)</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Space Complexity</h4>
+                    </div>
+                    <div class="card-body">
+                        <p>We create a 2D array of size (n+1) × (W+1):</p>
+                        <p>Space required: O(nW)</p>
+                        <p>Can be optimized to O(W) using a rolling array approach</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Efficiency Summary</h4>
+                    </div>
+                    <div class="card-body">
+                        <p>For small to medium-sized problems, the 0-1 Knapsack method employing Dynamic Programming offers an optimal solution.</p>
+                        <p>The O(nW) complexity makes it efficient for:</p>
+                        <ul>
+                            <li>n ≤ 1000</li>
+                            <li>W ≤ 100,000</li>
+                        </ul>
+                        <p>For larger problems, approximations or optimizations may be needed.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testing Section -->
+<section id="testing" class="section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Program Testing</h2>
+        </div>
+
+        <div class="algorithm-content">
+            <h3>Testing Methodology</h3>
+            <p>We tested the program extensively to ensure correct behavior under various scenarios:</p>
+
+            <div class="testing-cards">
+                <div class="testing-card">
+                    <h4>Unit Tests</h4>
+                    <p>Small, easily verifiable examples (like textbook knapsack problems).</p>
+                    <p>Example: W=4, items (weight [4,5,1], value [1,2,3]) → optimal solution picks item with weight 1 and value 3.</p>
+                </div>
+
+                <div class="testing-card">
+                    <h4>Edge Cases</h4>
+                    <ul>
+                        <li>No items (n=0): Outputs no items selected, total value 0</li>
+                        <li>Zero capacity (W=0): Chooses nothing, value 0</li>
+                        <li>All items heavier than capacity: Outputs no items, value 0</li>
+                        <li>Single item: Correctly includes if weight ≤ W</li>
+                    </ul>
+                </div>
+
+                <div class="testing-card">
+                    <h4>Typical Tests</h4>
+                    <p>Randomized tests with larger n and W to check performance.</p>
+                    <p>Manually verified that no combination yields a higher value than the program's output.</p>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 2rem;">Testing Summary</h3>
+            <p>The algorithm passed all tests. No discrepancies were found, confirming both correctness and stability. Performance remained acceptable even for worst-case reasonably sized inputs.</p>
+
+            <div class="card" style="margin-top: 2rem; background-color: #e3f2fd;">
+                <div class="card-body">
+                    <h4>Reflection & Strategy</h4>
+                    <p><strong>How might we distribute limited supplies for maximum impact?</strong></p>
+                    <p>This "How Might We" framing guided our problem approach, focusing on maximizing aid given capacity constraints.</p>
+
+                    <p><strong>PPCO Analysis:</strong></p>
+                    <ul style="padding-left: 20px; margin-top: 1rem;">
+                        <li><strong>Pluses:</strong> Realistic scenario, optimal solution, impactful humanitarian application</li>
+                        <li><strong>Potentials:</strong> Scalable to complex logistics, adaptable to other relief scenarios</li>
+                        <li><strong>Concerns:</strong> Incomplete data, large-scale problems</li>
+                        <li><strong>Options:</strong> Use estimates, heuristics, or optimized DP for large datasets</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Project</h3>
+                <p>This project optimizes flood relief supply distribution in Kelantan using dynamic programming to maximize aid delivery efficiency during disaster response.</p>
+                <div class="social-links">
+                    <a href="https://github.com/asteraaaaa/CSC4202-DPKnapsack" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-envelope"></i> 223368@student.upm.edu.my</p>
+                <p><i class="fas fa-phone"></i> +601125211812</p>
+                <p><i class="fas fa-map-marker-alt"></i> Universiti Putra Malaysia</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <p><a href="#home" style="color: #ddd;">Home</a></p>
+                <p><a href="#team" style="color: #ddd;">Our Team</a></p>
+                <p><a href="#problem" style="color: #ddd;">Problem Statement</a></p>
+                <p><a href="#algorithm" style="color: #ddd;">Algorithm</a></p>
+                <p><a href="#implementation" style="color: #ddd;">Implementation</a></p>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2023 Nyonyoo Group. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // Header shadow on scroll
+    window.addEventListener('scroll', function() {
+        const header = document.querySelector('header');
+        if (window.scrollY > 50) {
+            header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
+        } else {
+            header.style.boxShadow = 'none';
+        }
+    });
+</script>
 </body>
 </html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Knapsack Flowchart</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      padding: 20px;
+    }
+    .container {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .box {
+      border: 2px solid #333;
+      border-radius: 10px;
+      background: white;
+      padding: 15px 25px;
+      margin: 10px;
+      text-align: center;
+      width: 300px;
+      cursor: pointer;
+    }
+    .box.decision {
+      border-style: dashed;
+    }
+    .arrow {
+      margin: -10px 0 10px;
+      font-size: 18px;
+    }
+    .label {
+      font-size: 14px;
+      font-weight: bold;
+      margin: -5px 0 5px;
+    }
+    .branch {
+      display: flex;
+      justify-content: space-between;
+      width: 700px;
+      margin: 10px 0;
+    }
+    .branch .box {
+      width: 300px;
+    }
+  </style>
+</head>
+<body>
+<h2>0/1 Knapsack Flowchart</h2>
+<div class="container">
+
+  <div class="box" onclick="alert('Start program')">Start</div>
+  <div class="arrow">↓</div>
+
+  <div class="box" onclick="alert('Read input: number of items, their weights and values, and boat limit W')">
+    Read number of items (n)<br>
+    For each item: name[i], weight[i], value[i]<br>
+    Read boat's weight limit (W)
+  </div>
+  <div class="arrow">↓</div>
+
+  <div class="box" onclick="alert('Create dp[n+1][W+1], initialize with 0')">
+    Create dp[n+1][W+1]<br>
+    Initialize all dp[i][w] = 0
+  </div>
+  <div class="arrow">↓</div>
+
+  <div class="box" onclick="alert('Set i = 1, w = 0')">Set i = 1, w = 0</div>
+  <div class="arrow">↓</div>
+
+  <div class="box decision" onclick="alert('Check if i ≤ n')">If i ≤ n</div>
+  <div class="label">True</div>
+
+  <div class="box decision" onclick="alert('Check if w ≤ W')">If w ≤ W</div>
+  <div class="label">True</div>
+
+  <div class="box decision" onclick="alert('Check if weight[i] ≤ w')">If weight[i] ≤ w</div>
+  <div class="branch">
+    <div>
+      <div class="label">True</div>
+      <div class="box" onclick="alert('dp[i][w] = max(dp[i-1][w], value[i] + dp[i-1][w - weight[i]])')">
+        dp[i][w] = max(dp[i-1][w], value[i] + dp[i-1][w - weight[i]])
+      </div>
+    </div>
+    <div>
+      <div class="label">False</div>
+      <div class="box" onclick="alert('dp[i][w] = dp[i-1][w]')">
+        dp[i][w] = dp[i-1][w]
+      </div>
+    </div>
+  </div>
+
+  <div class="arrow">↓</div>
+  <div class="box" onclick="alert('Print dp[n][W] as max value')">Print dp[n][W] as max value</div>
+  <div class="arrow">↓</div>
+
+  <div class="box" onclick="alert('Set i = n, w = W')">Set i = n, w = W</div>
+  <div class="arrow">↓</div>
+
+  <div class="box decision" onclick="alert('Check if dp[i][w] ≠ dp[i-1][w]')">If dp[i][w] ≠ dp[i-1][w]</div>
+  <div class="branch">
+    <div>
+      <div class="label">True</div>
+      <div class="box" onclick="alert('Item i is selected')">Item i is selected</div>
+    </div>
+    <div>
+      <div class="label">False</div>
+      <div class="box" onclick="alert('Item i is not selected')">Item i is not selected</div>
+    </div>
+  </div>
+
+  <div class="arrow">↓</div>
+  <div class="box" onclick="alert('w = w - weight[i]')">w = w - weight[i]</div>
+  <div class="arrow">↓</div>
+
+  <div class="box" onclick="alert('Print selected item details')">Print item name, weight, value</div>
+  <div class="arrow">↓</div>
+
+  <div class="box" onclick="alert('Program ends')">Stop</div>
+
+</div>
+</body>
+</html>
