@@ -715,30 +715,54 @@
 
         <div class="flowchart-container" style="margin-top: 3rem;">
             <h3 style="text-align: center;">Solution Workflow</h3>
-            <div class="flowchart">
-                <div class="flow-step">
-                    <div class="step-number">1</div>
-                    <h4>Input Data</h4>
-                    <p>List of items with weights and values</p>
-                </div>
-                <div class="flow-step">
-                    <div class="step-number">2</div>
-                    <h4>Initialize DP Table</h4>
-                    <p>Create table for subproblem solutions</p>
-                </div>
-                <div class="flow-step">
-                    <div class="step-number">3</div>
-                    <h4>Fill DP Table</h4>
-                    <p>Compute optimal solutions bottom-up</p>
-                </div>
-                <div class="flow-step">
-                    <div class="step-number">4</div>
-                    <h4>Trace Solution</h4>
-                    <p>Identify selected items from DP table</p>
-                </div>
+            <div class="flowchart" style="text-align: center;">
+                <img src="flowchart.png" alt="Solution work flowchart" style="max-width: 100%; height: auto;">
             </div>
         </div>
+
+        <div class="card" style="margin-top: 3rem; border: 1px solid #ccc; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+            <div class="card-body" style="padding: 2rem;">
+                <h3 class="card-title" style="text-align: center; margin-bottom: 1.5rem;">Pseudocode</h3>
+                <pre class="font-monospace" style="font-family: monospace; white-space: pre-wrap;">
+// Input section
+Read n                      // Number of items
+For i = 1 to n:
+    Read name[i], weight[i], value[i]
+Read W                      // Maximum weight capacity of the boat
+
+// Initialize DP table
+Create dp[n+1][W+1]
+For i = 0 to n:
+    For w = 0 to W:
+        dp[i][w] = 0
+
+// Fill DP table
+For i = 1 to n:
+    For w = 0 to W:
+        If weight[i] &lt;= w:
+            dp[i][w] = max(dp[i-1][w], value[i] + dp[i-1][w - weight[i]])
+        Else:
+            dp[i][w] = dp[i-1][w]
+
+// Output the maximum value
+Print dp[n][W]
+
+// Backtrack to find selected items
+Set i = n
+Set w = W
+While i &gt; 0 and w &gt; 0:
+    If dp[i][w] ≠ dp[i-1][w]:
+        Print "selected item: ", name[i], "Weight:", weight[i], "Value:", value[i]
+        w = w - weight[i]
+    i = i - 1
+
+Stop
+        </pre>
+            </div>
+        </div>
+
     </div>
+
 </section>
 
 <!-- Implementation Section -->
