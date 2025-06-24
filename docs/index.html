@@ -484,7 +484,7 @@
                     </div>
                     <div>
                         <div class="bg-gray-100 rounded-lg p-4 h-full flex items-center justify-center">
-                            <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                            <img src="map.png"
                                  alt="Flood scenario"
                                  class="rounded-lg shadow-md w-full h-auto object-cover">
                         </div>
@@ -722,6 +722,11 @@
         </div>
 
         <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+            <!-- Flowchart Image Section -->
+            <div class="flex items-center justify-center">
+                <img src="flowchart.png" alt="Algorithm Flowchart"
+                     class="rounded-lg shadow-lg max-w-full h-auto">
+            </div>
             <h3 class="text-2xl font-bold text-gray-800 mb-6">Example Output</h3>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
@@ -781,70 +786,247 @@
                 </div>
             </div>
 
-            <h4 class="text-xl font-bold text-gray-800 mb-4">Input Data</h4>
-            <div class="table-container">
-                <table class="data-table">
-                    <thead>
-                    <tr>
-                        <th>Item</th>
-                        <th>Weight (g)</th>
-                        <th>Value</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>Small Bottled Water (3L)</td>
-                        <td>3000</td>
-                        <td>800</td>
-                    </tr>
-                    <tr>
-                        <td>Bottled Water (12L)</td>
-                        <td>12000</td>
-                        <td>850</td>
-                    </tr>
-                    <tr>
-                        <td>Prescription Medicines</td>
-                        <td>1000</td>
-                        <td>1000</td>
-                    </tr>
-                    <tr>
-                        <td>Medical Kit</td>
-                        <td>3000</td>
-                        <td>950</td>
-                    </tr>
-                    <tr>
-                        <td>First Aid Kit</td>
-                        <td>2000</td>
-                        <td>920</td>
-                    </tr>
-                    <tr>
-                        <td>Water Purifier Tablets</td>
-                        <td>10</td>
-                        <td>980</td>
-                    </tr>
-                    <tr>
-                        <td>Rice (10kg)</td>
-                        <td>10000</td>
-                        <td>700</td>
-                    </tr>
-                    <tr>
-                        <td>Baby Formula</td>
-                        <td>2000</td>
-                        <td>850</td>
-                    </tr>
-                    <tr>
-                        <td>Canned Food (mixed)</td>
-                        <td>6000</td>
-                        <td>750</td>
-                    </tr>
-                    <tr>
-                        <td>Instant Noodles (1 box)</td>
-                        <td>4000</td>
-                        <td>720</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
+            <!-- Input Data Section -->
+            <section id="input-data" class="py-20 bg-gray-50">
+                <div class="container mx-auto px-4">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Input Data</h2>
+                        <div class="w-20 h-1 bg-green-500 mx-auto"></div>
+                        <p class="text-xl text-gray-600 max-w-3xl mx-auto mt-4">
+                            Complete list of relief items with weights and urgency values
+                        </p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Relief Items Dataset</h3>
+                        <p class="text-gray-600 mb-6">
+                            The following table contains all available relief items with their respective weights (in grams) and urgency values (priority scores).
+                        </p>
+
+                        <div class="overflow-x-auto">
+                            <div class="max-h-96 overflow-y-auto border border-gray-200 rounded-lg">
+                                <table class="min-w-full divide-y divide-gray-200">
+                                    <thead class="bg-gray-50 sticky top-0">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Item Name
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Weight (g)
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Urgency Value
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Value per Weight
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="bg-white divide-y divide-gray-200">
+                                    <!-- Item rows will be inserted here -->
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Small Bottled Water (3L)</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">3000</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">800</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0.27</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Bottled Water (12L)</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">12000</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">850</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0.07</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Prescription Medicines</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">1000</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">1000</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">1.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Medical Kit</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">3000</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">950</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0.32</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">First Aid Kit</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2000</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">920</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0.46</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Water Purifier Tablets</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">10</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">980</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">98.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Rice (10kg)</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">10000</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">700</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0.07</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Baby Formula</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2000</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">850</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0.43</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Canned Food (mixed)</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">6000</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">750</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0.13</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Instant Noodles (1 box)</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">4000</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">720</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0.18</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Biscuits (Dry food)</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">3000</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">780</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0.26</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Salt & Sugar Pack</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2000</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">700</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0.35</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Toiletries Pack</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">3000</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">500</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0.17</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Sanitary Pads</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">1000</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">600</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0.60</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Baby Diapers</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2000</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">620</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0.31</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Adult Diapers</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2000</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">550</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0.28</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Antiseptic Wipes</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">10</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">700</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">70.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Soap Bars</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">1000</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">420</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0.42</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Towel Set</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2000</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">300</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0.15</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Warm Clothing Set</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">4000</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">400</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0.10</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Blanket</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">5000</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">350</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0.07</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Raincoat</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2000</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">320</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0.16</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Powerbank</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">1000</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">200</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0.20</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Flashlight</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">1000</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">250</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0.25</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Battery Pack</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">1000</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">220</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0.22</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Radio (Battery-powered)</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2000</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">210</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0.11</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Basic Tools Kit</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">7000</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">120</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0.02</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Rope Bundle</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2000</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">200</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0.10</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Tarp/Canvas Sheet</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">6000</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">100</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0.02</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Portable Stove</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">4000</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">130</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0.03</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Cooking Pot Set</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">5000</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">100</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0.02</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Energy Bars Pack</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">1000</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">650</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0.65</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 text-sm text-gray-500">
+                            <p><strong>Note:</strong> Value per Weight is calculated as (Urgency Value / Weight) and represents the efficiency of each item.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     </div>
 </section>
