@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Slab:wght@300;400;600&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
     <style>
         :root {
             --primary: #2563eb;
@@ -947,129 +950,90 @@
                 <p>}</p>
             </div>
 
-            <h3 class="text-2xl font-bold text-gray-800 mb-6">Complete Java Implementation</h3>
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            Small Rescue Boat
+                        </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample" style="">
+                        <div class="accordion-body">
+                            <ul>
+                                <li>Speed: 28 ms</li>
+                                <li>Total weight:  34020 g</li>
+                                <li>Total worth:   12530</li>
+                                <li>Remaining capacity: 980 g</li>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div>
-                    <h4 class="text-xl font-bold text-gray-800 mb-4">ItemReader Class</h4>
-                    <div class="code-block">
-                        <p><span class="code-keyword">package</span> com.CSC4202;</p>
-                        <br>
-                        <p><span class="code-keyword">import</span> java.io.BufferedReader;</p>
-                        <p><span class="code-keyword">import</span> java.io.FileReader;</p>
-                        <p><span class="code-keyword">import</span> java.io.IOException;</p>
-                        <p><span class="code-keyword">import</span> java.util.ArrayList;</p>
-                        <p><span class="code-keyword">import</span> java.util.List;</p>
-                        <br>
-                        <p><span class="code-keyword">public class</span> ItemReader {</p>
-                        <p class="ml-4"><span class="code-keyword">public static</span> List<Item> readItemsFromCSV(String filename) {</p>
-                        <p class="ml-8">List<Item> items = <span class="code-keyword">new</span> ArrayList<>();</p>
-                        <br>
-                        <p class="ml-8"><span class="code-keyword">try</span> (BufferedReader br = <span class="code-keyword">new</span> BufferedReader(<span class="code-keyword">new</span> FileReader(filename))) {</p>
-                        <p class="ml-12">String line;</p>
-                        <br>
-                        <p class="ml-12"><span class="code-keyword">while</span> ((line = br.readLine()) != <span class="code-keyword">null</span>) {</p>
-                        <p class="ml-16">String[] parts = line.split(<span class="code-string">"\t"</span>, 3);</p>
-                        <p class="ml-16"><span class="code-keyword">if</span> (parts.length == 3) {</p>
-                        <p class="ml-20">String name = parts[0].trim();</p>
-                        <p class="ml-20"><span class="code-keyword">int</span> weight = (<span class="code-keyword">int</span>) Double.parseDouble(parts[1].trim());</p>
-                        <p class="ml-20"><span class="code-keyword">int</span> value = Integer.parseInt(parts[2].trim());</p>
-                        <p class="ml-20">items.add(<span class="code-keyword">new</span> Item(name, value, weight));</p>
-                        <p class="ml-16">}</p>
-                        <p class="ml-12">}</p>
-                        <p class="ml-8">} <span class="code-keyword">catch</span> (IOException e) {</p>
-                        <p class="ml-12">System.err.println(<span class="code-string">"Error reading item file: "</span> + e.getMessage());</p>
-                        <p class="ml-8">}</p>
-                        <br>
-                        <p class="ml-8"><span class="code-keyword">return</span> items;</p>
-                        <p class="ml-4">}</p>
-                        <p>}</p>
+                                <li>Items selected:</li>
+                                <li>1. Small Bottled Water (3L) (Value: 800, Weight: 3000)</li>
+                                <li>2. Prescription Medicines (Value: 1000, Weight: 1000)</li>
+                                <li>3. Medical Kit (Value: 950, Weight: 3000)</li>
+                                <li>4. First Aid Kit (Value: 920, Weight: 2000)</li>
+                                <li>5. Water Purifier Tablets (Value: 980, Weight: 10)</li>
+                                <li>6. Baby Formula (Value: 850, Weight: 2000)</li>
+                                <li>7. Instant Noodles (1 box) (Value: 720, Weight: 4000)</li>
+                                <li>8. Biscuits (Dry food) (Value: 780, Weight: 3000)</li>
+                                <li>9. Salt & Sugar Pack (Value: 700, Weight: 2000)</li>
+                                <li>10. Toiletries Pack (Value: 500, Weight: 3000)</li>
+                                <li>11. Sanitary Pads (Value: 600, Weight: 1000)</li>
+                                <li>12. Baby Diapers (Value: 620, Weight: 2000)</li>
+                                <li>13. Adult Diapers (Value: 550, Weight: 2000)</li>
+                                <li>14. Antiseptic Wipes (Value: 700, Weight: 10)</li>
+                                <li>15. Soap Bars (Value: 420, Weight: 1000)</li>
+                                <li>16. Raincoat (Value: 320, Weight: 2000)</li>
+                                <li>17. Flashlight (Value: 250, Weight: 1000)</li>
+                                <li>18. Battery Pack (Value: 220, Weight: 1000)</li>
+                                <li>19. Energy Bars Pack (Value: 650, Weight: 1000)</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                            Medium Rubber Boat
+                        </button>
+                    </h2>
+                    <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample" style="">
+                        <div class="accordion-body">
+                            <ul>
+                            <li>Speed: 20 ms</li>
+                            <li>Total weight:  68020 g</li>
+                            <li>Total worth:   15790</li>
+                            <li>Remaining capacity: 1980 g</li>
 
-                <div>
-                    <h4 class="text-xl font-bold text-gray-800 mb-4">DPKnapsackSolver Class</h4>
-                    <div class="code-block">
-                        <p><span class="code-keyword">public class</span> DPKnapsackSolver {</p>
-                        <p class="ml-4"><span class="code-keyword">public static void</span> solve(List<Item> items, <span class="code-keyword">int</span> capacity) {</p>
-                        <p class="ml-8"><span class="code-keyword">long</span> startTime = System.currentTimeMillis(); <span class="code-comment">// Start timing</span></p>
-                        <br>
-                        <p class="ml-8"><span class="code-keyword">int</span> n = items.size();</p>
-                        <p class="ml-8"><span class="code-keyword">int</span>[][] dp = <span class="code-keyword">new int</span>[n + 1][capacity + 1];</p>
-                        <br>
-                        <p class="ml-8"><span class="code-comment">// Fill DP table</span></p>
-                        <p class="ml-8"><span class="code-keyword">for</span> (<span class="code-keyword">int</span> i = 1; i <= n; i++) {</p>
-                        <p class="ml-12">Item item = items.get(i - 1);</p>
-                        <p class="ml-12"><span class="code-keyword">for</span> (<span class="code-keyword">int</span> w = 0; w <= capacity; w++) {</p>
-                        <p class="ml-16"><span class="code-keyword">if</span> (item.getWeight() > w) {</p>
-                        <p class="ml-20">dp[i][w] = dp[i - 1][w];</p>
-                        <p class="ml-16">} <span class="code-keyword">else</span> {</p>
-                        <p class="ml-20">dp[i][w] = Math.max(dp[i - 1][w], dp[i - 1][w - item.getWeight()] + item.getValue());</p>
-                        <p class="ml-16">}</p>
-                        <p class="ml-12">}</p>
-                        <p class="ml-8">}</p>
-                        <br>
-                        <p class="ml-8"><span class="code-comment">// Backtrack to find selected items</span></p>
-                        <p class="ml-8"><span class="code-keyword">int</span> totalWeight = 0;</p>
-                        <p class="ml-8"><span class="code-keyword">int</span> remainingValue = dp[n][capacity];</p>
-                        <p class="ml-8"><span class="code-keyword">int</span> w = capacity;</p>
-                        <p class="ml-8">List<Item> selectedItems = <span class="code-keyword">new</span> ArrayList<>();</p>
-                        <br>
-                        <p class="ml-8"><span class="code-keyword">for</span> (<span class="code-keyword">int</span> i = n; i > 0 && remainingValue > 0; i--) {</p>
-                        <p class="ml-12"><span class="code-keyword">if</span> (dp[i][w] != dp[i - 1][w]) {</p>
-                        <p class="ml-16">Item item = items.get(i - 1);</p>
-                        <p class="ml-16">selectedItems.add(0, item); <span class="code-comment">// insert at the beginning to keep original order</span></p>
-                        <p class="ml-16">totalWeight += item.getWeight();</p>
-                        <p class="ml-16">remainingValue -= item.getValue();</p>
-                        <p class="ml-16">w -= item.getWeight();</p>
-                        <p class="ml-12">}</p>
-                        <p class="ml-8">}</p>
-                        <br>
-                        <p class="ml-8"><span class="code-keyword">long</span> endTime = System.currentTimeMillis(); <span class="code-comment">// End timing</span></p>
-                        <br>
-                        <p class="ml-8"><span class="code-comment">// Output</span></p>
-                        <p class="ml-8">System.out.println(<span class="code-string">"Dynamic Programming Result"</span>);</p>
-                        <p class="ml-8">System.out.println(<span class="code-string">"Speed: "</span> + (endTime - startTime) + <span class="code-string">" ms\n"</span>);</p>
-                        <br>
-                        <p class="ml-8">System.out.println(<span class="code-string">"Total weight:  "</span> + totalWeight + <span class="code-string">" g"</span>);</p>
-                        <p class="ml-8">System.out.println(<span class="code-string">"Total worth:   "</span> + dp[n][capacity]);</p>
-                        <p class="ml-8">System.out.println(<span class="code-string">"Remaining capacity: "</span> + (capacity - totalWeight) + <span class="code-string">" g\n"</span>);</p>
-                        <br>
-                        <p class="ml-8">System.out.println(<span class="code-string">"Items selected:"</span>);</p>
-                        <p class="ml-8"><span class="code-keyword">int</span> count = 1;</p>
-                        <p class="ml-8"><span class="code-keyword">for</span> (Item item : selectedItems) {</p>
-                        <p class="ml-12">System.out.println(count++ + <span class="code-string">". "</span> + item.getName() + <span class="code-string">" (Value: "</span> + item.getValue() + <span class="code-string">", Weight: "</span> + item.getWeight() + <span class="code-string">")"</span>);</p>
-                        <p class="ml-8">}</p>
-                        <p class="ml-4">}</p>
-                        <p>}</p>
+                            <li>Items selected:</li>
+                            <li>1. Small Bottled Water (3L) (Value: 800, Weight: 3000)</li>
+                            <li>2. Bottled Water (12L) (Value: 850, Weight: 12000)</li>
+                            <li>3. Prescription Medicines (Value: 1000, Weight: 1000)</li>
+                            <li>4. Medical Kit (Value: 950, Weight: 3000)</li>
+                            <li>5. First Aid Kit (Value: 920, Weight: 2000)</li>
+                            <li>6. Water Purifier Tablets (Value: 980, Weight: 10)</li>
+                            <li>7. Baby Formula (Value: 850, Weight: 2000)</li>
+                            <li>8. Canned Food (mixed) (Value: 750, Weight: 6000)</li>
+                            <li>9. Instant Noodles (1 box) (Value: 720, Weight: 4000)</li>
+                            <li>10. Biscuits (Dry food) (Value: 780, Weight: 3000)</li>
+                            <li>11. Salt & Sugar Pack (Value: 700, Weight: 2000)</li>
+                            <li>12. Toiletries Pack (Value: 500, Weight: 3000)</li>
+                            <li>13. Sanitary Pads (Value: 600, Weight: 1000)</li>
+                            <li>14. Baby Diapers (Value: 620, Weight: 2000)</li>
+                            <li>15. Adult Diapers (Value: 550, Weight: 2000)</li>
+                            <li>16. Antiseptic Wipes (Value: 700, Weight: 10)</li>
+                            <li>17. Soap Bars (Value: 420, Weight: 1000)</li>
+                            <li>18. Towel Set (Value: 300, Weight: 2000)</li>
+                            <li>19. Warm Clothing Set (Value: 400, Weight: 4000)</li>
+                            <li>20. Blanket (Value: 350, Weight: 5000)</li>
+                            <li>21. Raincoat (Value: 320, Weight: 2000)</li>
+                            <li>22. Powerbank (Value: 200, Weight: 1000)</li>
+                            <li>23. Flashlight (Value: 250, Weight: 1000)</li>
+                            <li>24. Battery Pack (Value: 220, Weight: 1000)</li>
+                            <li>25. Radio (Battery-powered) (Value: 210, Weight: 2000)</li>
+                            <li>26. Rope Bundle (Value: 200, Weight: 2000)</li>
+                            <li>27. Energy Bars Pack (Value: 650, Weight: 1000)</li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-            </div>
-
-            <div class="mt-8">
-                <h4 class="text-xl font-bold text-gray-800 mb-4">Main Class</h4>
-                <div class="code-block">
-                    <p><span class="code-keyword">public class</span> Main {</p>
-                    <p class="ml-4"><span class="code-keyword">public static void</span> main(String[] args) {</p>
-                    <p class="ml-8">String filePath = <span class="code-string">"src/main/java/com/CSC4202/item.tsv"</span>;</p>
-                    <p class="ml-8"><span class="code-keyword">int</span> SmallRescueBoat = 35000;</p>
-                    <p class="ml-8"><span class="code-keyword">int</span> MediumRubberBoat = 70000;</p>
-                    <br>
-                    <p class="ml-8">List<Item> items = ItemReader.readItemsFromCSV(filePath);</p>
-                    <p class="ml-8"><span class="code-keyword">if</span> (items.isEmpty()) {</p>
-                    <p class="ml-12">System.out.println(<span class="code-string">"No items loaded. Check your file format."</span>);</p>
-                    <p class="ml-12"><span class="code-keyword">return</span>;</p>
-                    <p class="ml-8">}</p>
-                    <br>
-                    <p class="ml-8">System.out.println(<span class="code-string">"\nSmall Rescue Boat"</span>);</p>
-                    <p class="ml-8"><span class="code-comment">// Dynamic Programming</span></p>
-                    <p class="ml-8">DPKnapsackSolver.solve(items, SmallRescueBoat);</p>
-                    <br>
-                    <p class="ml-8">System.out.println(<span class="code-string">"\nMedium Rubber Boat"</span>);</p>
-                    <p class="ml-8"><span class="code-comment">// Dynamic Programming</span></p>
-                    <p class="ml-8">DPKnapsackSolver.solve(items, MediumRubberBoat);</p>
-                    <p class="ml-4">}</p>
-                    <p>}</p>
                 </div>
             </div>
 
