@@ -1,5 +1,9 @@
 # Flood Relief Optimization with 0/1 Knapsack DP
 
+[![CI](https://github.com/asteraaaaa/CSC4202-DPKnapsack/actions/workflows/ci.yml/badge.svg)](https://github.com/asteraaaaa/CSC4202-DPKnapsack/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+![Java 17+](https://img.shields.io/badge/Java-17%2B-orange)
+
 A **CSC4202 (Design and Analysis of Algorithms)** group project at Universiti Putra Malaysia.
 
 During the Kelantan floods, rescue boats have a strict weight limit and far more relief supplies than they can carry. This project uses **dynamic programming (0/1 knapsack)** to decide which supplies to load so that the total *worth* (urgency/usefulness) is as high as possible without exceeding the boat's capacity.
@@ -20,7 +24,7 @@ There are 32 relief items (water, medicine, food, hygiene, shelter, tools...). E
 
 - **Greedy** (best worth-per-gram first) is fast but can miss the optimum for 0/1 items.
 - **Brute force** checks all 2ⁿ subsets, which is infeasible as n grows.
-- **DP** finds the guaranteed optimum in O(n·W) time by reusing solutions to smaller subproblems.
+- **DP** finds the guaranteed optimum in O(n·W) time by reusing solutions to smaller subproblems. The [correctness proof](https://asteraaaaa.github.io/CSC4202-DPKnapsack/#correctness) (base case, induction hypothesis, induction step) and the [complexity analysis](https://asteraaaaa.github.io/CSC4202-DPKnapsack/#analysis) are on the project page.
 
 Recurrence, where `dp[i][w]` is the best worth using the first `i` items with capacity `w`:
 
@@ -94,3 +98,7 @@ For the Medium Rubber Boat (70,000 g) the optimum is a total worth of **15,790**
 ## Team: Nyonyoo Group
 
 Nurul Izzah Mardhiyyah, Adibah Nawal, Filzah Irdina, Muhammad Hazuan. See the [project page](https://asteraaaaa.github.io/CSC4202-DPKnapsack/) for roles and contacts.
+
+## Licence
+
+[MIT](LICENSE). Free to reuse with attribution.
